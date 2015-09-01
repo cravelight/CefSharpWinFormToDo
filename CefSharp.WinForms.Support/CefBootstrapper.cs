@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CefSharp.WinForms.Support.Schemes;
 
 namespace CefSharp.WinForms.Support
 {
@@ -10,8 +11,27 @@ namespace CefSharp.WinForms.Support
     {
         public static void Initialize()
         {
-            Cef.Initialize(new CefSettings());
+            var settings = new CefSettings();
+            settings.CefCommandLineArgs.Add("disable-gpu-vsync", "1");//https://github.com/cefsharp/CefSharp/wiki/Trouble-Shooting
+            settings.CefCommandLineArgs.Add("disable-gpu", "1");//https://github.com/cefsharp/CefSharp/wiki/Trouble-Shooting
+            settings.CachePath = "cache";
 
+
+            // Register localfile scheme
+            settings.RegisterScheme(new CefCustomScheme()
+            {
+                SchemeName = LocalFileSchemeHandlerFactory.SchemeName,
+                SchemeHandlerFactory = new LocalFileSchemeHandlerFactory()
+            });
+
+            // Register resouce scheme
+            settings.RegisterScheme(new CefCustomScheme()
+            {
+                SchemeName = EmbeddedResourceSchemeHandlerFactory.SchemeName,
+                SchemeHandlerFactory = new EmbeddedResourceSchemeHandlerFactory()
+            });
+
+            Cef.Initialize(settings);
         }
 
         public static BrowserSettings GetStandardBrowserSettings()
@@ -24,15 +44,6 @@ namespace CefSharp.WinForms.Support
                 TextAreaResizeDisabled = true
             };
             return browserSettings;
-        }
-
-        public static ChromiumWebBrowser GetStandardBrowser(string url = "")
-        {
-            return new ChromiumWebBrowser(url)
-            {
-                BrowserSettings = GetStandardBrowserSettings()
-            };
-
         }
 
     }

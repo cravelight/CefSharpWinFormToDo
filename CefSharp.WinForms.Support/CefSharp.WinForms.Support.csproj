@@ -81,7 +81,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CefBootstrapper.cs" />
+    <Compile Include="Controls\ControlExtensions.cs" />
+    <Compile Include="EnhancedChromiumWebBrowser.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schemes\EmbeddedResourceSchemeHandler.cs" />
+    <Compile Include="Schemes\EmbeddedResourceSchemeHandlerFactory.cs" />
+    <Compile Include="Schemes\LocalFileSchemeHandler.cs" />
+    <Compile Include="Schemes\LocalFileSchemeHandlerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
