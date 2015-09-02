@@ -19,7 +19,7 @@ namespace CefSharpWinFormToDo
         {
             InitializeComponent();
             InitBrowser(); // browser does not have design time support so init it here
-            Browser.Load("maps.google.com");
+            Browser.Load("localfile://todomvc/jquery/index.html");
         }
 
         public EnhancedChromiumWebBrowser Browser { get; private set; }
@@ -34,7 +34,7 @@ namespace CefSharpWinFormToDo
             Browser.ConsoleMessageUiThreadSafe += Browser_ConsoleMessageUiThreadSafe;
             Browser.AddressChangedUiThreadSafe += Browser_AddressChangedUiThreadSafe;
 
-            splitContainer1.Panel1.Controls.Add(Browser);
+            splitTodos.Panel1.Controls.Add(Browser);
 
         }
 

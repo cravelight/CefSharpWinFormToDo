@@ -11,6 +11,7 @@ namespace CefSharp.WinForms.Support
     {
         public static void Initialize()
         {
+            //todo: grab all the cool settings stuff from the main github repo winforms sample
             var settings = new CefSettings();
             settings.CefCommandLineArgs.Add("disable-gpu-vsync", "1");//https://github.com/cefsharp/CefSharp/wiki/Trouble-Shooting
             settings.CefCommandLineArgs.Add("disable-gpu", "1");//https://github.com/cefsharp/CefSharp/wiki/Trouble-Shooting
@@ -20,6 +21,7 @@ namespace CefSharp.WinForms.Support
             // Register localfile scheme
             settings.RegisterScheme(new CefCustomScheme()
             {
+                IsStandard = true,
                 SchemeName = LocalFileSchemeHandlerFactory.SchemeName,
                 SchemeHandlerFactory = new LocalFileSchemeHandlerFactory()
             });

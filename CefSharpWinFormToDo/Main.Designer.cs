@@ -29,30 +29,37 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.StatusBarMessage = new System.Windows.Forms.ToolStripStatusLabel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.BrowserConsole = new System.Windows.Forms.TextBox();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnShowChromeVersionInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDevToolsShow = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDevToolsHide = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.StatusBarMessage = new System.Windows.Forms.ToolStripStatusLabel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BrowserConsole = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BrowserAddressLog = new System.Windows.Forms.TextBox();
+            this.splitTodos = new System.Windows.Forms.SplitContainer();
+            this.TodoList = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitTodos)).BeginInit();
+            this.splitTodos.Panel2.SuspendLayout();
+            this.splitTodos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TodoList)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -64,6 +71,37 @@
             this.menuStrip1.Size = new System.Drawing.Size(884, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnShowChromeVersionInfo,
+            this.btnDevToolsShow,
+            this.btnDevToolsHide});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // btnShowChromeVersionInfo
+            // 
+            this.btnShowChromeVersionInfo.Name = "btnShowChromeVersionInfo";
+            this.btnShowChromeVersionInfo.Size = new System.Drawing.Size(214, 22);
+            this.btnShowChromeVersionInfo.Text = "Show Chrome Version Info";
+            this.btnShowChromeVersionInfo.Click += new System.EventHandler(this.btnShowChromeVersionInfo_Click);
+            // 
+            // btnDevToolsShow
+            // 
+            this.btnDevToolsShow.Name = "btnDevToolsShow";
+            this.btnDevToolsShow.Size = new System.Drawing.Size(214, 22);
+            this.btnDevToolsShow.Text = "Show Developer Tools";
+            this.btnDevToolsShow.Click += new System.EventHandler(this.btnDevToolsShow_Click);
+            // 
+            // btnDevToolsHide
+            // 
+            this.btnDevToolsHide.Name = "btnDevToolsHide";
+            this.btnDevToolsHide.Size = new System.Drawing.Size(214, 22);
+            this.btnDevToolsHide.Text = "Hide Developer Tools";
+            this.btnDevToolsHide.Click += new System.EventHandler(this.btnDevToolsHide_Click);
             // 
             // toolStrip1
             // 
@@ -97,12 +135,33 @@
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.splitTodos);
+            // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(884, 590);
             this.splitContainer1.SplitterDistance = 406;
             this.splitContainer1.TabIndex = 3;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.groupBox1);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.groupBox2);
+            this.splitContainer2.Size = new System.Drawing.Size(884, 180);
+            this.splitContainer2.SplitterDistance = 417;
+            this.splitContainer2.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -126,54 +185,6 @@
             this.BrowserConsole.TabIndex = 0;
             this.BrowserConsole.WordWrap = false;
             // 
-            // toolsToolStripMenuItem
-            // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnShowChromeVersionInfo,
-            this.btnDevToolsShow,
-            this.btnDevToolsHide});
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
-            this.toolsToolStripMenuItem.Text = "Tools";
-            // 
-            // btnShowChromeVersionInfo
-            // 
-            this.btnShowChromeVersionInfo.Name = "btnShowChromeVersionInfo";
-            this.btnShowChromeVersionInfo.Size = new System.Drawing.Size(214, 22);
-            this.btnShowChromeVersionInfo.Text = "Show Chrome Version Info";
-            this.btnShowChromeVersionInfo.Click += new System.EventHandler(this.btnShowChromeVersionInfo_Click);
-            // 
-            // btnDevToolsShow
-            // 
-            this.btnDevToolsShow.Name = "btnDevToolsShow";
-            this.btnDevToolsShow.Size = new System.Drawing.Size(214, 22);
-            this.btnDevToolsShow.Text = "Show Developer Tools";
-            this.btnDevToolsShow.Click += new System.EventHandler(this.btnDevToolsShow_Click);
-            // 
-            // btnDevToolsHide
-            // 
-            this.btnDevToolsHide.Name = "btnDevToolsHide";
-            this.btnDevToolsHide.Size = new System.Drawing.Size(214, 22);
-            this.btnDevToolsHide.Text = "Hide Developer Tools";
-            this.btnDevToolsHide.Click += new System.EventHandler(this.btnDevToolsHide_Click);
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.groupBox1);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 180);
-            this.splitContainer2.SplitterDistance = 417;
-            this.splitContainer2.TabIndex = 1;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.BrowserAddressLog);
@@ -196,6 +207,28 @@
             this.BrowserAddressLog.TabIndex = 1;
             this.BrowserAddressLog.WordWrap = false;
             // 
+            // splitTodos
+            // 
+            this.splitTodos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitTodos.Location = new System.Drawing.Point(0, 0);
+            this.splitTodos.Name = "splitTodos";
+            // 
+            // splitTodos.Panel2
+            // 
+            this.splitTodos.Panel2.Controls.Add(this.TodoList);
+            this.splitTodos.Size = new System.Drawing.Size(884, 406);
+            this.splitTodos.SplitterDistance = 413;
+            this.splitTodos.TabIndex = 0;
+            // 
+            // TodoList
+            // 
+            this.TodoList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TodoList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TodoList.Location = new System.Drawing.Point(0, 0);
+            this.TodoList.Name = "TodoList";
+            this.TodoList.Size = new System.Drawing.Size(467, 406);
+            this.TodoList.TabIndex = 0;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,17 +248,22 @@
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.splitTodos.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitTodos)).EndInit();
+            this.splitTodos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TodoList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,6 +285,8 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox BrowserAddressLog;
+        private System.Windows.Forms.SplitContainer splitTodos;
+        private System.Windows.Forms.DataGridView TodoList;
     }
 }
 
