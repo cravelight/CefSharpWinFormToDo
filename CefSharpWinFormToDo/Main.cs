@@ -19,7 +19,15 @@ namespace CefSharpWinFormToDo
         {
             InitializeComponent();
             InitBrowser(); // browser does not have design time support so init it here
-            Browser.Load("localfile://todomvc/jquery/index.html");
+            try
+            {
+                Browser.Load("chrome://version/");
+            }
+            catch (Exception e)
+            {
+                var foo = e;
+                throw;
+            }
         }
 
         public EnhancedChromiumWebBrowser Browser { get; private set; }
@@ -31,7 +39,7 @@ namespace CefSharpWinFormToDo
                 BrowserSettings = CefBootstrapper.GetStandardBrowserSettings(),
                 Dock = DockStyle.Fill,
             };
-            Browser.ConsoleMessageUiThreadSafe += Browser_ConsoleMessageUiThreadSafe;
+            //Browser.ConsoleMessageUiThreadSafe += Browser_ConsoleMessageUiThreadSafe;
             Browser.AddressChangedUiThreadSafe += Browser_AddressChangedUiThreadSafe;
 
             splitTodos.Panel1.Controls.Add(Browser);
@@ -86,6 +94,16 @@ namespace CefSharpWinFormToDo
         private void btnDevToolsHide_Click(object sender, EventArgs e)
         {
             Browser.CloseDevTools();
+        }
+
+        private void btnVanillaJs_Click(object sender, EventArgs e)
+        {
+            Browser.Load("localfile://todomvc/vanillajs/index.html");
+        }
+
+        private void btnJQuery_Click(object sender, EventArgs e)
+        {
+            Browser.Load("localfile://todomvc/jquery/index.html");
         }
 
 

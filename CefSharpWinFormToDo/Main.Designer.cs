@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnShowChromeVersionInfo = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,29 +38,32 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusBarMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitTodos = new System.Windows.Forms.SplitContainer();
+            this.TodoList = new System.Windows.Forms.DataGridView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.BrowserConsole = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BrowserAddressLog = new System.Windows.Forms.TextBox();
-            this.splitTodos = new System.Windows.Forms.SplitContainer();
-            this.TodoList = new System.Windows.Forms.DataGridView();
+            this.btnVanillaJs = new System.Windows.Forms.ToolStripButton();
+            this.btnJQuery = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitTodos)).BeginInit();
+            this.splitTodos.Panel2.SuspendLayout();
+            this.splitTodos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TodoList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitTodos)).BeginInit();
-            this.splitTodos.Panel2.SuspendLayout();
-            this.splitTodos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TodoList)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -106,6 +110,9 @@
             // toolStrip1
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnJQuery,
+            this.btnVanillaJs});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(884, 25);
@@ -145,6 +152,28 @@
             this.splitContainer1.Size = new System.Drawing.Size(884, 590);
             this.splitContainer1.SplitterDistance = 406;
             this.splitContainer1.TabIndex = 3;
+            // 
+            // splitTodos
+            // 
+            this.splitTodos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitTodos.Location = new System.Drawing.Point(0, 0);
+            this.splitTodos.Name = "splitTodos";
+            // 
+            // splitTodos.Panel2
+            // 
+            this.splitTodos.Panel2.Controls.Add(this.TodoList);
+            this.splitTodos.Size = new System.Drawing.Size(884, 406);
+            this.splitTodos.SplitterDistance = 413;
+            this.splitTodos.TabIndex = 0;
+            // 
+            // TodoList
+            // 
+            this.TodoList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TodoList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TodoList.Location = new System.Drawing.Point(0, 0);
+            this.TodoList.Name = "TodoList";
+            this.TodoList.Size = new System.Drawing.Size(467, 406);
+            this.TodoList.TabIndex = 0;
             // 
             // splitContainer2
             // 
@@ -207,27 +236,25 @@
             this.BrowserAddressLog.TabIndex = 1;
             this.BrowserAddressLog.WordWrap = false;
             // 
-            // splitTodos
+            // btnVanillaJs
             // 
-            this.splitTodos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitTodos.Location = new System.Drawing.Point(0, 0);
-            this.splitTodos.Name = "splitTodos";
+            this.btnVanillaJs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnVanillaJs.Image = ((System.Drawing.Image)(resources.GetObject("btnVanillaJs.Image")));
+            this.btnVanillaJs.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnVanillaJs.Name = "btnVanillaJs";
+            this.btnVanillaJs.Size = new System.Drawing.Size(55, 22);
+            this.btnVanillaJs.Text = "VanillaJS";
+            this.btnVanillaJs.Click += new System.EventHandler(this.btnVanillaJs_Click);
             // 
-            // splitTodos.Panel2
+            // btnJQuery
             // 
-            this.splitTodos.Panel2.Controls.Add(this.TodoList);
-            this.splitTodos.Size = new System.Drawing.Size(884, 406);
-            this.splitTodos.SplitterDistance = 413;
-            this.splitTodos.TabIndex = 0;
-            // 
-            // TodoList
-            // 
-            this.TodoList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TodoList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TodoList.Location = new System.Drawing.Point(0, 0);
-            this.TodoList.Name = "TodoList";
-            this.TodoList.Size = new System.Drawing.Size(467, 406);
-            this.TodoList.TabIndex = 0;
+            this.btnJQuery.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnJQuery.Image = ((System.Drawing.Image)(resources.GetObject("btnJQuery.Image")));
+            this.btnJQuery.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnJQuery.Name = "btnJQuery";
+            this.btnJQuery.Size = new System.Drawing.Size(46, 22);
+            this.btnJQuery.Text = "jQuery";
+            this.btnJQuery.Click += new System.EventHandler(this.btnJQuery_Click);
             // 
             // Main
             // 
@@ -246,12 +273,18 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.splitTodos.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitTodos)).EndInit();
+            this.splitTodos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TodoList)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -260,10 +293,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.splitTodos.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitTodos)).EndInit();
-            this.splitTodos.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.TodoList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,6 +316,8 @@
         private System.Windows.Forms.TextBox BrowserAddressLog;
         private System.Windows.Forms.SplitContainer splitTodos;
         private System.Windows.Forms.DataGridView TodoList;
+        private System.Windows.Forms.ToolStripButton btnVanillaJs;
+        private System.Windows.Forms.ToolStripButton btnJQuery;
     }
 }
 

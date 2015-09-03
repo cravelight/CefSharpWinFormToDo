@@ -42,11 +42,12 @@ namespace CefSharp.WinForms.Support
             {
                 FileAccessFromFileUrlsAllowed = true, // cross domain http://stackoverflow.com/a/18013586/121466
                 UniversalAccessFromFileUrlsAllowed = true, // cross domain http://stackoverflow.com/a/18013586/121466
-                WebSecurityDisabled = false, //false is default
-                TextAreaResizeDisabled = true
+                WebSecurityDisabled = true, //false is default
+                TextAreaResizeDisabled = true,
             };
             return browserSettings;
         }
 
     }
 }
+
