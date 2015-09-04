@@ -35,6 +35,8 @@
             this.btnDevToolsShow = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDevToolsHide = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnJQuery = new System.Windows.Forms.ToolStripButton();
+            this.btnVanillaJs = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusBarMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -45,8 +47,6 @@
             this.BrowserConsole = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BrowserAddressLog = new System.Windows.Forms.TextBox();
-            this.btnVanillaJs = new System.Windows.Forms.ToolStripButton();
-            this.btnJQuery = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -119,6 +119,26 @@
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // btnJQuery
+            // 
+            this.btnJQuery.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnJQuery.Image = ((System.Drawing.Image)(resources.GetObject("btnJQuery.Image")));
+            this.btnJQuery.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnJQuery.Name = "btnJQuery";
+            this.btnJQuery.Size = new System.Drawing.Size(46, 22);
+            this.btnJQuery.Text = "jQuery";
+            this.btnJQuery.Click += new System.EventHandler(this.btnJQuery_Click);
+            // 
+            // btnVanillaJs
+            // 
+            this.btnVanillaJs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnVanillaJs.Image = ((System.Drawing.Image)(resources.GetObject("btnVanillaJs.Image")));
+            this.btnVanillaJs.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnVanillaJs.Name = "btnVanillaJs";
+            this.btnVanillaJs.Size = new System.Drawing.Size(55, 22);
+            this.btnVanillaJs.Text = "VanillaJS";
+            this.btnVanillaJs.Click += new System.EventHandler(this.btnVanillaJs_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -168,10 +188,13 @@
             // 
             // TodoList
             // 
+            this.TodoList.AllowUserToAddRows = false;
+            this.TodoList.AllowUserToDeleteRows = false;
             this.TodoList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TodoList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TodoList.Location = new System.Drawing.Point(0, 0);
             this.TodoList.Name = "TodoList";
+            this.TodoList.ReadOnly = true;
             this.TodoList.Size = new System.Drawing.Size(467, 406);
             this.TodoList.TabIndex = 0;
             // 
@@ -235,26 +258,6 @@
             this.BrowserAddressLog.Size = new System.Drawing.Size(457, 161);
             this.BrowserAddressLog.TabIndex = 1;
             this.BrowserAddressLog.WordWrap = false;
-            // 
-            // btnVanillaJs
-            // 
-            this.btnVanillaJs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnVanillaJs.Image = ((System.Drawing.Image)(resources.GetObject("btnVanillaJs.Image")));
-            this.btnVanillaJs.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnVanillaJs.Name = "btnVanillaJs";
-            this.btnVanillaJs.Size = new System.Drawing.Size(55, 22);
-            this.btnVanillaJs.Text = "VanillaJS";
-            this.btnVanillaJs.Click += new System.EventHandler(this.btnVanillaJs_Click);
-            // 
-            // btnJQuery
-            // 
-            this.btnJQuery.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnJQuery.Image = ((System.Drawing.Image)(resources.GetObject("btnJQuery.Image")));
-            this.btnJQuery.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnJQuery.Name = "btnJQuery";
-            this.btnJQuery.Size = new System.Drawing.Size(46, 22);
-            this.btnJQuery.Text = "jQuery";
-            this.btnJQuery.Click += new System.EventHandler(this.btnJQuery_Click);
             // 
             // Main
             // 

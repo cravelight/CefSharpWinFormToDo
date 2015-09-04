@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using CefSharp;
 using CefSharp.WinForms;
 using CefSharp.WinForms.Support;
+using CefSharp.WinForms.Support.Controls;
 
 namespace CefSharpWinFormToDo
 {
@@ -44,9 +45,29 @@ namespace CefSharpWinFormToDo
             Browser.ConsoleMessageUiThreadSafe += Browser_ConsoleMessageUiThreadSafe;
             Browser.AddressChangedUiThreadSafe += Browser_AddressChangedUiThreadSafe;
 
+            // register objects for JavaScript
+            _toDoStoreProxy = new ToDoStoreProxy();
+            _toDoStoreProxy.StoreUpdated += _toDoStoreProxy_StoreUpdated;
+            Browser.RegisterJsObject("todoStoreProxy", _toDoStoreProxy);
+
             splitTodos.Panel1.Controls.Add(Browser);
 
         }
+
+        private ToDoStoreProxy _toDoStoreProxy;
+        void _toDoStoreProxy_StoreUpdated(object sender, EventArgs e)
+        {
+            this.InvokeOnUiThreadIfRequired(UpdateTodoListDataSource);
+        }
+
+        private void UpdateTodoListDataSource()
+        {
+            this.SuspendLayout();
+            TodoList.DataSource = _toDoStoreProxy.ToDoItems;
+            this.ResumeLayout();
+
+        }
+
 
         private void Browser_ConsoleMessageUiThreadSafe(object sender, ConsoleMessageEventArgs args)
         {

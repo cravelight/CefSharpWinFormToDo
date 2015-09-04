@@ -29,10 +29,13 @@ jQuery(function ($) {
 			return count === 1 ? word : word + 's';
 		},
 		store: function (namespace, data) {
-			if (arguments.length > 1) {
+		    if (arguments.length > 1) {
+		        console.log("SaveStore: " + JSON.stringify(data)); // gidmanma
+		        window.todoStoreProxy.writeToStore(JSON.stringify(data)); //gidmanma
 				return localStorage.setItem(namespace, JSON.stringify(data));
 			} else {
 				var store = localStorage.getItem(namespace);
+				console.log("GetStore: " + store); // gidmanma
 				return (store && JSON.parse(store)) || [];
 			}
 		}
