@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace CefSharpWinFormToDo
         {
             InitializeComponent();
             InitBrowser(); // browser does not have design time support so init it here
+            InitializeHttpServer();
             try
             {
                 Browser.Load("chrome://version/");
@@ -39,7 +41,7 @@ namespace CefSharpWinFormToDo
                 BrowserSettings = CefBootstrapper.GetStandardBrowserSettings(),
                 Dock = DockStyle.Fill,
             };
-            //Browser.ConsoleMessageUiThreadSafe += Browser_ConsoleMessageUiThreadSafe;
+            Browser.ConsoleMessageUiThreadSafe += Browser_ConsoleMessageUiThreadSafe;
             Browser.AddressChangedUiThreadSafe += Browser_AddressChangedUiThreadSafe;
 
             splitTodos.Panel1.Controls.Add(Browser);
@@ -75,6 +77,7 @@ namespace CefSharpWinFormToDo
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
+            _simpleHttpServer.Stop();
             Browser.Dispose();
             Cef.Shutdown();
         }
@@ -98,14 +101,34 @@ namespace CefSharpWinFormToDo
 
         private void btnVanillaJs_Click(object sender, EventArgs e)
         {
-            Browser.Load("localfile://todomvc/vanillajs/index.html");
+            var path = string.Format(
+                "http://localhost:{0}/vanillajs/index.html", 
+                _simpleHttpServer.Port
+                );
+            Browser.Load(path);
         }
 
         private void btnJQuery_Click(object sender, EventArgs e)
         {
-            Browser.Load("localfile://todomvc/jquery/index.html");
+            var path = string.Format(
+                "http://localhost:{0}/jquery/index.html",
+                _simpleHttpServer.Port
+                );
+            Browser.Load(path);
         }
 
+        private void InitializeHttpServer()
+        {
+            var executingDir = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            if (executingDir == null)
+            {
+                throw new Exception("Unable to discover path to executing directory");
+            }
+            var pathToTodoMvc = Path.Combine(executingDir, "todomvc");
+            _simpleHttpServer = new SimpleHttpServer(pathToTodoMvc);
+        }
+
+        private SimpleHttpServer _simpleHttpServer;
 
     }
 }
