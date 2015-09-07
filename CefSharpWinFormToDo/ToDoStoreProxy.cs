@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CefSharp.WinForms;
 using Newtonsoft.Json;
 
 namespace CefSharpWinFormToDo
@@ -16,7 +17,7 @@ namespace CefSharpWinFormToDo
             ToDoItems = new List<ToDoItem>();
         }
 
-        public void WriteToStore(string jsonItems)
+        public void WriteToWinFormStoreFromJavaScript(string jsonItems)
         {
             ToDoItems = JsonConvert.DeserializeObject<List<ToDoItem>>(jsonItems);
             if (StoreUpdated != null)
@@ -26,6 +27,19 @@ namespace CefSharpWinFormToDo
         }
 
         public event EventHandler StoreUpdated;
+
+        public void AddToDoItemFromWinForm(ChromiumWebBrowser browser, string title)
+        {
+            var js = "App.todos.push({" +
+                     "id: '" + Guid.NewGuid() + "'," +
+                     "title: '" + title + "'," +
+                     "completed: false" +
+                     "});";
+
+            browser.ExecuteScriptAsync(js);
+            browser.ExecuteScriptAsync("App.render();");
+        }
+
     }
 
     public class ToDoItem

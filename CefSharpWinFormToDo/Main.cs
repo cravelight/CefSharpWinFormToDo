@@ -151,5 +151,16 @@ namespace CefSharpWinFormToDo
 
         private SimpleHttpServer _simpleHttpServer;
 
+        private void txtNewTodoTitle_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter
+                && !string.IsNullOrEmpty(txtNewTodoTitle.Text))
+            {
+                _toDoStoreProxy.AddToDoItemFromWinForm(Browser, txtNewTodoTitle.Text);
+                txtNewTodoTitle.Text = string.Empty;
+            }
+        }
+
+
     }
 }

@@ -47,6 +47,9 @@
             this.BrowserConsole = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BrowserAddressLog = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtNewTodoTitle = new System.Windows.Forms.TextBox();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -64,6 +67,7 @@
             this.splitContainer2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -182,20 +186,19 @@
             // splitTodos.Panel2
             // 
             this.splitTodos.Panel2.Controls.Add(this.TodoList);
+            this.splitTodos.Panel2.Controls.Add(this.groupBox3);
             this.splitTodos.Size = new System.Drawing.Size(884, 406);
             this.splitTodos.SplitterDistance = 413;
             this.splitTodos.TabIndex = 0;
             // 
             // TodoList
             // 
-            this.TodoList.AllowUserToAddRows = false;
-            this.TodoList.AllowUserToDeleteRows = false;
+            this.TodoList.BackgroundColor = System.Drawing.Color.White;
             this.TodoList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TodoList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TodoList.Location = new System.Drawing.Point(0, 0);
+            this.TodoList.Location = new System.Drawing.Point(0, 52);
             this.TodoList.Name = "TodoList";
-            this.TodoList.ReadOnly = true;
-            this.TodoList.Size = new System.Drawing.Size(467, 406);
+            this.TodoList.Size = new System.Drawing.Size(467, 354);
             this.TodoList.TabIndex = 0;
             // 
             // splitContainer2
@@ -259,6 +262,37 @@
             this.BrowserAddressLog.TabIndex = 1;
             this.BrowserAddressLog.WordWrap = false;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtNewTodoTitle);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox3.Location = new System.Drawing.Point(0, 0);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(467, 52);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Add ToDo Item";
+            // 
+            // txtNewTodoTitle
+            // 
+            this.txtNewTodoTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtNewTodoTitle.Location = new System.Drawing.Point(3, 16);
+            this.txtNewTodoTitle.Name = "txtNewTodoTitle";
+            this.txtNewTodoTitle.Size = new System.Drawing.Size(461, 20);
+            this.txtNewTodoTitle.TabIndex = 0;
+            this.txtNewTodoTitle.WordWrap = false;
+            this.txtNewTodoTitle.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNewTodoTitle_KeyUp);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,6 +330,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,6 +357,9 @@
         private System.Windows.Forms.DataGridView TodoList;
         private System.Windows.Forms.ToolStripButton btnVanillaJs;
         private System.Windows.Forms.ToolStripButton btnJQuery;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox txtNewTodoTitle;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }
 

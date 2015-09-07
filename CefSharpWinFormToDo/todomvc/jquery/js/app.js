@@ -1,4 +1,5 @@
 /*global jQuery, Handlebars, Router */
+var App; // define outside jQuery function so we can access it from outside
 jQuery(function ($) {
 	'use strict';
 
@@ -31,7 +32,7 @@ jQuery(function ($) {
 		store: function (namespace, data) {
 		    if (arguments.length > 1) {
 		        console.log("SaveStore: " + JSON.stringify(data)); // gidmanma
-		        window.todoStoreProxy.writeToStore(JSON.stringify(data)); //gidmanma
+		        window.todoStoreProxy.writeToWinFormStoreFromJavaScript(JSON.stringify(data)); //gidmanma
 				return localStorage.setItem(namespace, JSON.stringify(data));
 			} else {
 				var store = localStorage.getItem(namespace);
@@ -41,7 +42,7 @@ jQuery(function ($) {
 		}
 	};
 
-	var App = {
+	App = {
 		init: function () {
 			this.todos = util.store('todos-jquery');
 			this.cacheElements();
@@ -211,4 +212,7 @@ jQuery(function ($) {
 	};
 
 	App.init();
+
 });
+
+
