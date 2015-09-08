@@ -29,28 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnShowChromeVersionInfo = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDevToolsShow = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDevToolsHide = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnJQuery = new System.Windows.Forms.ToolStripButton();
-            this.btnVanillaJs = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusBarMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitTodos = new System.Windows.Forms.SplitContainer();
             this.TodoList = new System.Windows.Forms.DataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtNewTodoTitle = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.BrowserConsole = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BrowserAddressLog = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtNewTodoTitle = new System.Windows.Forms.TextBox();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.menuStrip1.SuspendLayout();
+            this.btnShowVersionInfo = new System.Windows.Forms.ToolStripButton();
+            this.btnHideDevTools = new System.Windows.Forms.ToolStripButton();
+            this.btnShowDevTools = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -61,63 +57,24 @@
             this.splitTodos.Panel2.SuspendLayout();
             this.splitTodos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TodoList)).BeginInit();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolsToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(884, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // toolsToolStripMenuItem
-            // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnShowChromeVersionInfo,
-            this.btnDevToolsShow,
-            this.btnDevToolsHide});
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
-            this.toolsToolStripMenuItem.Text = "Tools";
-            // 
-            // btnShowChromeVersionInfo
-            // 
-            this.btnShowChromeVersionInfo.Name = "btnShowChromeVersionInfo";
-            this.btnShowChromeVersionInfo.Size = new System.Drawing.Size(214, 22);
-            this.btnShowChromeVersionInfo.Text = "Show Chrome Version Info";
-            this.btnShowChromeVersionInfo.Click += new System.EventHandler(this.btnShowChromeVersionInfo_Click);
-            // 
-            // btnDevToolsShow
-            // 
-            this.btnDevToolsShow.Name = "btnDevToolsShow";
-            this.btnDevToolsShow.Size = new System.Drawing.Size(214, 22);
-            this.btnDevToolsShow.Text = "Show Developer Tools";
-            this.btnDevToolsShow.Click += new System.EventHandler(this.btnDevToolsShow_Click);
-            // 
-            // btnDevToolsHide
-            // 
-            this.btnDevToolsHide.Name = "btnDevToolsHide";
-            this.btnDevToolsHide.Size = new System.Drawing.Size(214, 22);
-            this.btnDevToolsHide.Text = "Hide Developer Tools";
-            this.btnDevToolsHide.Click += new System.EventHandler(this.btnDevToolsHide_Click);
             // 
             // toolStrip1
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnJQuery,
-            this.btnVanillaJs});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.btnShowDevTools,
+            this.btnHideDevTools,
+            this.btnShowVersionInfo,
+            this.btnJQuery});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(884, 25);
             this.toolStrip1.TabIndex = 1;
@@ -129,19 +86,9 @@
             this.btnJQuery.Image = ((System.Drawing.Image)(resources.GetObject("btnJQuery.Image")));
             this.btnJQuery.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnJQuery.Name = "btnJQuery";
-            this.btnJQuery.Size = new System.Drawing.Size(46, 22);
-            this.btnJQuery.Text = "jQuery";
+            this.btnJQuery.Size = new System.Drawing.Size(114, 22);
+            this.btnJQuery.Text = "Load jQuery ToDo\'s";
             this.btnJQuery.Click += new System.EventHandler(this.btnJQuery_Click);
-            // 
-            // btnVanillaJs
-            // 
-            this.btnVanillaJs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnVanillaJs.Image = ((System.Drawing.Image)(resources.GetObject("btnVanillaJs.Image")));
-            this.btnVanillaJs.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnVanillaJs.Name = "btnVanillaJs";
-            this.btnVanillaJs.Size = new System.Drawing.Size(55, 22);
-            this.btnVanillaJs.Text = "VanillaJS";
-            this.btnVanillaJs.Click += new System.EventHandler(this.btnVanillaJs_Click);
             // 
             // statusStrip1
             // 
@@ -162,7 +109,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 49);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 25);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -173,8 +120,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 590);
-            this.splitContainer1.SplitterDistance = 406;
+            this.splitContainer1.Size = new System.Drawing.Size(884, 614);
+            this.splitContainer1.SplitterDistance = 422;
             this.splitContainer1.TabIndex = 3;
             // 
             // splitTodos
@@ -187,80 +134,22 @@
             // 
             this.splitTodos.Panel2.Controls.Add(this.TodoList);
             this.splitTodos.Panel2.Controls.Add(this.groupBox3);
-            this.splitTodos.Size = new System.Drawing.Size(884, 406);
+            this.splitTodos.Size = new System.Drawing.Size(884, 422);
             this.splitTodos.SplitterDistance = 413;
             this.splitTodos.TabIndex = 0;
             // 
             // TodoList
             // 
+            this.TodoList.AllowUserToAddRows = false;
+            this.TodoList.AllowUserToDeleteRows = false;
             this.TodoList.BackgroundColor = System.Drawing.Color.White;
             this.TodoList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TodoList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TodoList.Location = new System.Drawing.Point(0, 52);
             this.TodoList.Name = "TodoList";
-            this.TodoList.Size = new System.Drawing.Size(467, 354);
+            this.TodoList.ReadOnly = true;
+            this.TodoList.Size = new System.Drawing.Size(467, 370);
             this.TodoList.TabIndex = 0;
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.groupBox1);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer2.Size = new System.Drawing.Size(884, 180);
-            this.splitContainer2.SplitterDistance = 417;
-            this.splitContainer2.TabIndex = 1;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.BrowserConsole);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(417, 180);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Browser Console";
-            // 
-            // BrowserConsole
-            // 
-            this.BrowserConsole.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BrowserConsole.Location = new System.Drawing.Point(3, 16);
-            this.BrowserConsole.Multiline = true;
-            this.BrowserConsole.Name = "BrowserConsole";
-            this.BrowserConsole.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.BrowserConsole.Size = new System.Drawing.Size(411, 161);
-            this.BrowserConsole.TabIndex = 0;
-            this.BrowserConsole.WordWrap = false;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.BrowserAddressLog);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(463, 180);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Browser Address Log";
-            // 
-            // BrowserAddressLog
-            // 
-            this.BrowserAddressLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BrowserAddressLog.Location = new System.Drawing.Point(3, 16);
-            this.BrowserAddressLog.Multiline = true;
-            this.BrowserAddressLog.Name = "BrowserAddressLog";
-            this.BrowserAddressLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.BrowserAddressLog.Size = new System.Drawing.Size(457, 161);
-            this.BrowserAddressLog.TabIndex = 1;
-            this.BrowserAddressLog.WordWrap = false;
             // 
             // groupBox3
             // 
@@ -283,6 +172,67 @@
             this.txtNewTodoTitle.WordWrap = false;
             this.txtNewTodoTitle.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNewTodoTitle_KeyUp);
             // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.groupBox1);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.groupBox2);
+            this.splitContainer2.Size = new System.Drawing.Size(884, 188);
+            this.splitContainer2.SplitterDistance = 417;
+            this.splitContainer2.TabIndex = 1;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.BrowserConsole);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(417, 188);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Browser Console";
+            // 
+            // BrowserConsole
+            // 
+            this.BrowserConsole.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BrowserConsole.Location = new System.Drawing.Point(3, 16);
+            this.BrowserConsole.Multiline = true;
+            this.BrowserConsole.Name = "BrowserConsole";
+            this.BrowserConsole.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.BrowserConsole.Size = new System.Drawing.Size(411, 169);
+            this.BrowserConsole.TabIndex = 0;
+            this.BrowserConsole.WordWrap = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.BrowserAddressLog);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(463, 188);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Browser Address Log";
+            // 
+            // BrowserAddressLog
+            // 
+            this.BrowserAddressLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BrowserAddressLog.Location = new System.Drawing.Point(3, 16);
+            this.BrowserAddressLog.Multiline = true;
+            this.BrowserAddressLog.Name = "BrowserAddressLog";
+            this.BrowserAddressLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.BrowserAddressLog.Size = new System.Drawing.Size(457, 169);
+            this.BrowserAddressLog.TabIndex = 1;
+            this.BrowserAddressLog.WordWrap = false;
+            // 
             // printPreviewDialog1
             // 
             this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
@@ -293,6 +243,36 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // btnShowVersionInfo
+            // 
+            this.btnShowVersionInfo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnShowVersionInfo.Image = ((System.Drawing.Image)(resources.GetObject("btnShowVersionInfo.Image")));
+            this.btnShowVersionInfo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnShowVersionInfo.Name = "btnShowVersionInfo";
+            this.btnShowVersionInfo.Size = new System.Drawing.Size(151, 22);
+            this.btnShowVersionInfo.Text = "Show Chrome Version Info";
+            this.btnShowVersionInfo.Click += new System.EventHandler(this.btnShowVersionInfo_Click);
+            // 
+            // btnHideDevTools
+            // 
+            this.btnHideDevTools.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnHideDevTools.Image = ((System.Drawing.Image)(resources.GetObject("btnHideDevTools.Image")));
+            this.btnHideDevTools.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnHideDevTools.Name = "btnHideDevTools";
+            this.btnHideDevTools.Size = new System.Drawing.Size(90, 22);
+            this.btnHideDevTools.Text = "Hide Dev Tools";
+            this.btnHideDevTools.Click += new System.EventHandler(this.btnHideDevTools_Click);
+            // 
+            // btnShowDevTools
+            // 
+            this.btnShowDevTools.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnShowDevTools.Image = ((System.Drawing.Image)(resources.GetObject("btnShowDevTools.Image")));
+            this.btnShowDevTools.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnShowDevTools.Name = "btnShowDevTools";
+            this.btnShowDevTools.Size = new System.Drawing.Size(94, 22);
+            this.btnShowDevTools.Text = "Show Dev Tools";
+            this.btnShowDevTools.Click += new System.EventHandler(this.btnShowDevTools_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,15 +281,11 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.ShowIcon = false;
             this.Text = "CefSharp WinForm ToDo Sample";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -322,6 +298,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitTodos)).EndInit();
             this.splitTodos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TodoList)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -330,8 +308,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -339,27 +315,24 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel StatusBarMessage;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox BrowserConsole;
-        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem btnShowChromeVersionInfo;
-        private System.Windows.Forms.ToolStripMenuItem btnDevToolsShow;
-        private System.Windows.Forms.ToolStripMenuItem btnDevToolsHide;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox BrowserAddressLog;
         private System.Windows.Forms.SplitContainer splitTodos;
         private System.Windows.Forms.DataGridView TodoList;
-        private System.Windows.Forms.ToolStripButton btnVanillaJs;
         private System.Windows.Forms.ToolStripButton btnJQuery;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtNewTodoTitle;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.ToolStripButton btnShowDevTools;
+        private System.Windows.Forms.ToolStripButton btnHideDevTools;
+        private System.Windows.Forms.ToolStripButton btnShowVersionInfo;
     }
 }
 

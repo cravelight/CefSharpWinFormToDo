@@ -1,5 +1,7 @@
 /*global jQuery, Handlebars, Router */
-var App; // define outside jQuery function so we can access it from outside
+
+var App; // @cravelight define outside jQuery function so we can access it from outside
+
 jQuery(function ($) {
 	'use strict';
 
@@ -31,12 +33,12 @@ jQuery(function ($) {
 		},
 		store: function (namespace, data) {
 		    if (arguments.length > 1) {
-		        console.log("SaveStore: " + JSON.stringify(data)); // gidmanma
-		        window.todoStoreProxy.writeToWinFormStoreFromJavaScript(JSON.stringify(data)); //gidmanma
+		        console.log("SaveStore: " + JSON.stringify(data)); // @cravelight
+		        window.todoStoreProxy.writeToWinFormStoreFromJavaScript(JSON.stringify(data)); // @cravelight
 				return localStorage.setItem(namespace, JSON.stringify(data));
 			} else {
 				var store = localStorage.getItem(namespace);
-				console.log("GetStore: " + store); // gidmanma
+				console.log("GetStore: " + store); // @cravelight
 				return (store && JSON.parse(store)) || [];
 			}
 		}

@@ -17,23 +17,17 @@ namespace CefSharpWinFormToDo
 {
     public partial class Main : Form
     {
+        public EnhancedChromiumWebBrowser Browser { get; private set; }
+        private SimpleHttpServer _simpleHttpServer;
+        private ToDoStoreProxy _toDoStoreProxy;
+
         public Main()
         {
             InitializeComponent();
             InitBrowser(); // browser does not have design time support so init it here
             InitializeHttpServer();
-            try
-            {
-                Browser.Load("chrome://version/");
-            }
-            catch (Exception e)
-            {
-                var foo = e;
-                throw;
-            }
         }
 
-        public EnhancedChromiumWebBrowser Browser { get; private set; }
     
         private void InitBrowser()
         {
@@ -45,7 +39,9 @@ namespace CefSharpWinFormToDo
             Browser.ConsoleMessageUiThreadSafe += Browser_ConsoleMessageUiThreadSafe;
             Browser.AddressChangedUiThreadSafe += Browser_AddressChangedUiThreadSafe;
 
-            // register objects for JavaScript
+            // register objects for JavaScript 
+            //   must happen immediately after Browser instantiated 
+            //   per https://github.com/cefsharp/CefSharp/wiki/Frequently-asked-questions#3-how-do-you-expose-a-net-class-to-javascript 
             _toDoStoreProxy = new ToDoStoreProxy();
             _toDoStoreProxy.StoreUpdated += _toDoStoreProxy_StoreUpdated;
             Browser.RegisterJsObject("todoStoreProxy", _toDoStoreProxy);
@@ -54,7 +50,17 @@ namespace CefSharpWinFormToDo
 
         }
 
-        private ToDoStoreProxy _toDoStoreProxy;
+        private void InitializeHttpServer()
+        {
+            var executingDir = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            if (executingDir == null)
+            {
+                throw new Exception("Unable to discover path to executing directory");
+            }
+            var pathToTodoMvc = Path.Combine(executingDir, "todomvc");
+            _simpleHttpServer = new SimpleHttpServer(pathToTodoMvc);
+        }
+
         void _toDoStoreProxy_StoreUpdated(object sender, EventArgs e)
         {
             this.InvokeOnUiThreadIfRequired(UpdateTodoListDataSource);
@@ -105,30 +111,6 @@ namespace CefSharpWinFormToDo
 
 
 
-        private void btnShowChromeVersionInfo_Click(object sender, EventArgs e)
-        {
-            Browser.Load("chrome://version/");
-        }
-
-        private void btnDevToolsShow_Click(object sender, EventArgs e)
-        {
-            Browser.ShowDevTools();
-        }
-
-        private void btnDevToolsHide_Click(object sender, EventArgs e)
-        {
-            Browser.CloseDevTools();
-        }
-
-        private void btnVanillaJs_Click(object sender, EventArgs e)
-        {
-            var path = string.Format(
-                "http://localhost:{0}/vanillajs/index.html", 
-                _simpleHttpServer.Port
-                );
-            Browser.Load(path);
-        }
-
         private void btnJQuery_Click(object sender, EventArgs e)
         {
             var path = string.Format(
@@ -138,19 +120,6 @@ namespace CefSharpWinFormToDo
             Browser.Load(path);
         }
 
-        private void InitializeHttpServer()
-        {
-            var executingDir = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
-            if (executingDir == null)
-            {
-                throw new Exception("Unable to discover path to executing directory");
-            }
-            var pathToTodoMvc = Path.Combine(executingDir, "todomvc");
-            _simpleHttpServer = new SimpleHttpServer(pathToTodoMvc);
-        }
-
-        private SimpleHttpServer _simpleHttpServer;
-
         private void txtNewTodoTitle_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter
@@ -159,6 +128,21 @@ namespace CefSharpWinFormToDo
                 _toDoStoreProxy.AddToDoItemFromWinForm(Browser, txtNewTodoTitle.Text);
                 txtNewTodoTitle.Text = string.Empty;
             }
+        }
+
+        private void btnShowDevTools_Click(object sender, EventArgs e)
+        {
+            Browser.ShowDevTools();
+        }
+
+        private void btnHideDevTools_Click(object sender, EventArgs e)
+        {
+            Browser.CloseDevTools();
+        }
+
+        private void btnShowVersionInfo_Click(object sender, EventArgs e)
+        {
+            Browser.Load("chrome://version/");
         }
 
 

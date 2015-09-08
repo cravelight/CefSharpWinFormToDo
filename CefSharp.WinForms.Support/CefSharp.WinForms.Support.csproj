@@ -90,6 +90,7 @@
     <Compile Include="Schemes\EmbeddedResourceSchemeHandlerFactory.cs" />
     <Compile Include="Schemes\LocalFileSchemeHandler.cs" />
     <Compile Include="Schemes\LocalFileSchemeHandlerFactory.cs" />
+    <Compile Include="SimpleHttpServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

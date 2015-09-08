@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace CefSharpWinFormToDo
+namespace CefSharp.WinForms.Support
 {
     /// <summary>
     /// https://gist.github.com/aksakalli/9191056 
@@ -134,7 +134,7 @@ namespace CefSharpWinFormToDo
         private void Listen()
         {
             _listener = new HttpListener();
-            // gidmanma: //http://stackoverflow.com/a/5408458
+            // @cravelight: http://stackoverflow.com/a/5408458
             // changed -> _listener.Prefixes.Add("http://*:" + _port.ToString() + "/");
             _listener.Prefixes.Add("http://localhost:" + _port.ToString() + "/");
             _listener.Start();
